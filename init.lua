@@ -1,6 +1,5 @@
-
 require("lazy-import")
 require("settings")
-require("keymaps")
 require("plugins")
+require("keymaps")
 require("plugin-after-effects")
