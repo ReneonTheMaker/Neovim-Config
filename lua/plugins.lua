@@ -9,10 +9,6 @@ require("lazy").setup({
                 filters = { dotfiles = true },
             })
 
-            vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {
-                noremap = true, 
-                silent = true 
-            })
         end
     },
     -- Github Copilot
