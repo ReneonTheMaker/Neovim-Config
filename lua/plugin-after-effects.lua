@@ -24,3 +24,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+-- CMP menu colors
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+vim.api.nvim_set_hl(0, "Pmenu", { link = "Normal" })
+vim.api.nvim_set_hl(0, "PmenuSel", { link = "Visual" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { link = "Pmenu" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { link = "Pmenu" })
