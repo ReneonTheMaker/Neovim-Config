@@ -18,3 +18,6 @@ vim.api.nvim_create_autocmd("FileType", {
         end,
 })
 vim.cmd("colorscheme retrobox")
+-- background transparent
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+vim.cmd("hi NormalFloat guibg=NONE ctermbg=NONE")
