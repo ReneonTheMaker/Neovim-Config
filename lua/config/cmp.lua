@@ -20,8 +20,7 @@ cmp.setup({
         vim.lsp.buf.hover()
       end
     end, { "i", "s", "n" }),
-    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["C-w"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
@@ -37,7 +36,7 @@ vim.lsp.start({
   name = "gopls",
   cmd = {"gopls"},
   capabilities = capabilities,
-  root_dir = vim.fs.root(0, "go.work", "go.mod", ".git"),
+  root_dir = vim.fs.root(0, "go.work", "go.mod"),
   settings = {
     gopls = {
       gofumpt = true,
