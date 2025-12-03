@@ -10,7 +10,6 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping(function()
       if cmp.visible_docs() then
         cmp.close_docs()
@@ -20,7 +19,8 @@ cmp.setup({
         vim.lsp.buf.hover()
       end
     end, { "i", "s", "n" }),
-    ["C-w"] = cmp.mapping.confirm({ select = true }),
+    ["<C-w>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
     { name = "nvim_lsp" },

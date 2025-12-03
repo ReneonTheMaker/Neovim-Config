@@ -17,6 +17,27 @@ vim.keymap.set(
     silent = true,
   }
 )
+
+vim.keymap.set(
+  "n",
+  "<C-s>",
+  ":w<CR>",
+  {
+    noremap = true,
+    silent = true,
+  }
+)
+
+vim.keymap.set(
+  "n",
+  "<C-b>",
+  ":!go run .<CR>",
+  {
+    noremap = true,
+    silent = true,
+  }
+)
+
 vim.keymap.set(
   "t",
   "<Esc>",
