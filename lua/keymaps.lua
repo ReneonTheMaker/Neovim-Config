@@ -69,3 +69,9 @@ vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {
   noremap = true, 
   silent = true 
 })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    vim.cmd("silent! lua vim.lsp.buf.format()")
+  end,
+})
