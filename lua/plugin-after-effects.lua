@@ -1,30 +1,31 @@
--- Auto-open nvim-tree if the current folder contains any .go files
-vim.api.nvim_create_autocmd("VimEnter", {
+-- Auto-open nvim-tree only for Go projects (safer version)
+vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
-    local handle = io.popen("ls *.go 2>/dev/null")
+    if vim.bo.buftype == "directory" or vim.bo.filetype == "NvimTree" then
+      return
+    end
+
+    -- Only check for .go files in the current working directory
+    local handle = io.popen("ls *.go 2>/dev/null | head -c 1")
     local result = handle:read("*a")
     handle:close()
 
     if result ~= "" then
-      vim.cmd("NvimTreeOpen")
+      require("nvim-tree.api").tree.open()
       vim.cmd("wincmd p")
     end
   end,
 })
 
+-- Keep your quit-when-only-tree logic
 vim.api.nvim_create_autocmd("BufEnter", {
   nested = true,
   callback = function()
-    -- Check if only one window is left
-    if vim.fn.winnr("$") == 1 then
-      local bufname = vim.api.nvim_buf_get_name(0)
-      if bufname:match("NvimTree_") then
-        vim.cmd("quit")
-      end
+    if vim.fn.winnr("$") == 1 and vim.bo.filetype == "NvimTree" then
+      vim.cmd("quit")
     end
   end,
 })
-
 -- CMP menu colors
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })

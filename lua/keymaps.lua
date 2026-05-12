@@ -53,22 +53,14 @@ vim.keymap.set(
 vim.keymap.set(
   "n", "q?", "<Nop>"
 )
-vim.keymap.set(
-  "i",
-  "<Tab>",
-  function()
-    if require("copilot.suggestion").is_visible() then
-      require("copilot.suggestion").accept()
-    else
-      return "<Tab>"
-    end
-  end,
-  { expr = true, noremap = true }
-)
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {
   noremap = true, 
   silent = true 
 })
+vim.keymap.set("n", "<C-d>", function()
+    vim.lsp.buf.hover()
+end, { silent = true, desc = "Show docs" })
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
