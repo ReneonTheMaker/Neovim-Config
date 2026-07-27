@@ -1,30 +1,30 @@
 -- lua/plugins.lua
 require("lazy").setup({
   {
-  "nvim-tree/nvim-tree.lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    require("nvim-tree").setup({
-      view = { width = 30 },
-      filters = { dotfiles = true },
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup({
+        view = { width = 30 },
+        filters = { dotfiles = true },
 
-      -- THIS IS THE IMPORTANT PART
-      hijack_directories = {
-        enable = true,
-        auto_open = true,
-      },
-      sync_root_with_cwd = true,
-      respect_buf_cwd = true,
+        -- THIS IS THE IMPORTANT PART
+        hijack_directories = {
+          enable = true,
+          auto_open = true,
+        },
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
 
-      -- Prevent conflicts on startup
-      on_attach = function(bufnr)
-        local api = require("nvim-tree.api")
-        -- default mappings
-        api.config.mappings.default_on_attach(bufnr)
-      end,
-    })
-  end,
-},
+        -- Prevent conflicts on startup
+        on_attach = function(bufnr)
+          local api = require("nvim-tree.api")
+          -- default mappings
+          api.config.mappings.default_on_attach(bufnr)
+        end,
+      })
+    end,
+  },
   -- LSP & Mason
   {
     "neovim/nvim-lspconfig",
